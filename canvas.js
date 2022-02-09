@@ -15,10 +15,14 @@ function crearTablero() {
     }
 }
 
-function dibujarLineaLetra() {
-    pincel.fillStyle = "black";
-    pincel.beginPath();
-    pincel.moveTo(700, 600);
-    pincel.lineTo(750, 600);
-    pincel.stroke();
+function dibujarLineaLetra(palabra) {
+    var pos = 300;
+    for (var i=0; i < palabra.length; i++){
+        pincel.fillStyle = "black";
+        pincel.beginPath();
+        pincel.moveTo(pos, 600);
+        pincel.lineTo((pos + 50), 600);
+        pincel.stroke();
+        pos = pos + 70; // dejo un espacio en blanco para el siguiente guion
+    }
 }
