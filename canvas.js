@@ -2,10 +2,12 @@ var pantalla = document.querySelector('#ahorcado');
 // Oculto canvas hasta que inicia juego
 pantalla.style.display = 'none';
 var pincel = pantalla.getContext("2d");
+pincel.font="bold 60px arial";
+
 
 function crearTablero() {
     pincel.fillStyle = "lightgrey"
-    pincel.fillRect(0,0,800,1200);
+    pincel.fillRect(0,0,1200,800);
     
     // Muestra canvas al click del boton
     if (pantalla.style.display == 'none') {
@@ -27,6 +29,19 @@ function dibujarLineaLetra(palabra) {
     }
 }
 
+function dibujarLetra(indexLetra, palabraSecreta) {
+    var posX = 325;
+    var i = 0;
+    while (indexLetra.length>i) {
+        pincel.beginPath();
+        let posInicial = posX + (70* indexLetra[i]);
+        pincel.moveTo(posInicial, 600);
+        pincel.fillText(palabraSecreta.charAt(indexLetra[i]), posInicial, 600);
+        i++;
+    } 
+}
+
+// Funciones que dibujan por partes la base y el cuerpo del ahorcado
 function dibujarBase() {
     pincel.strokeRect (10,500, 280, 100);
 }
