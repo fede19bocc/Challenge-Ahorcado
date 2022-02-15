@@ -23,9 +23,12 @@ botonIniciar.addEventListener('click', function(evento){
 function teclado(tecla) {
     dibujarLetra(buscaLetra(tecla.key, palabraSecreta), palabraSecreta);
     if (buscaLetra(tecla.key, palabraSecreta).length == 0) {
-        dibujarAhorcado(ahorcado);
-        ahorcado++;
-    }
+        if (letrasIncorrectas.indexOf(tecla.key) < 0) {
+            letrasIncorrectas.push(tecla.key);
+            dibujarAhorcado(ahorcado);
+            ahorcado++;
+        }
+    }else {letrasCorrectas.push(tecla.key)}
 }
 
 function dibujarAhorcado(numero) {
