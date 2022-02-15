@@ -26,6 +26,7 @@ function teclado(tecla) {
         if (letrasIncorrectas.indexOf(tecla.key) < 0) {
             letrasIncorrectas.push(tecla.key);
             dibujarAhorcado(ahorcado);
+            dibujarLetraEquivocada(tecla.key, ahorcado);
             ahorcado++;
         }
     }else {letrasCorrectas.push(tecla.key)}
