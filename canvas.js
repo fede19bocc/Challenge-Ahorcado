@@ -41,6 +41,18 @@ function dibujarLetra(indexLetra, palabraSecreta) {
     } 
 }
 
+function dibujarLetraEquivocada(letra, indice) {
+    var posX = 325;
+    pincel.beginPath();
+    if (indice == 0) {
+        pincel.moveTo(posX, 700);
+        pincel.fillText(letra, posX, 700);
+    } else {
+        pincel.moveTo(posX+(70*indice), 700);
+        pincel.fillText(letra, posX+(70*indice), 700);
+    }
+}
+
 // Funciones que dibujan por partes la base y el cuerpo del ahorcado
 function dibujarBase() {
     pincel.strokeRect (10,500, 280, 100);
