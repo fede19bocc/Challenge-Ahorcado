@@ -2,20 +2,26 @@ var botonIniciar = document.querySelector('#iniciar-juego');
 var botonAgregarPalabra = document.querySelector('#nueva-palabra');
 var inputPalabraSecreta = document.querySelector('#input-nueva-palabra');
 var palabrasSecretras = ["hola", "mundo", "cochera", "palacio", "murcielago"];
-var juegoIniciado = false;
 var palabraSecreta = "";
 var ahorcado = 0;
-
 var letrasCorrectas = [];
 var letrasIncorrectas = [];
 
+function reinicioVariables(){
+    palabraSecreta = "";
+    ahorcado = 0;
+    letrasCorrectas = [];
+    letrasIncorrectas = [];
+    pantalla.style.display = 'none';
+}
+
 botonIniciar.addEventListener('click', function(evento){
-    crearTablero();
+    reinicioVariables();
+    crearTablero();    
     palabraSecreta = escogerPalabra();
     dibujarLineaLetra(palabraSecreta); 
     dibujarBase();
     evento.preventDefault();
-    juegoIniciado = true;
     console.log(palabraSecreta);
     document.addEventListener('keypress', teclado);
 });
@@ -29,9 +35,26 @@ function teclado(tecla) {
             dibujarLetraEquivocada(tecla.key, ahorcado);
             ahorcado++;
         }
-    }else {letrasCorrectas.push(tecla.key)}
+    }else {
+        if (letrasCorrectas.indexOf(tecla.key) < 0) {
+            letrasCorrectas.push(tecla.key);
+        }
+    }
+    ganarJuego(letrasCorrectas, palabraSecreta);
 }
 
+function ganarJuego (letrasCorrectas, palabraSecreta) {
+    var contador = 0;
+    const letrasEnPalabra = new Set(palabraSecreta.split(''));
+    let resultado = [...letrasEnPalabra];
+    letrasCorrectas.forEach(letra => { if (resultado.includes(letra)) {
+        contador++
+        }
+    });
+    if (contador == resultado.length) {
+        return alert("Gano el juego!!!");
+    }
+}
 function dibujarAhorcado(numero) {
     if (numero == 0) {return dibujarMastilVert1(), dibujarMastilHorz(), dibujarMastilVert2();}
     else if (numero == 1) {return dibujarCabeza();}
