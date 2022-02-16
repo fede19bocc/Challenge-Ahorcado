@@ -62,8 +62,7 @@ function dibujarAhorcado(numero) {
     else if (numero == 3) {return dibujarBrazo('der');}
     else if (numero == 4) {return dibujarBrazo('izq');}
     else if (numero == 5) {return dibujarPierna('der');}
-    else if (numero == 6) {return dibujarPierna('izq');}
-    else { alert("perdiste!!!");}
+    else {return dibujarPierna('izq'), alert("perdiste!!!") ;}
 }
 
 botonAgregarPalabra.addEventListener('click', function(evento) {
