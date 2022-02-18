@@ -41,6 +41,18 @@ function dibujarLetra(indexLetra, palabraSecreta) {
     } 
 }
 
+function dibujarPerdiste() {
+    pincel.fillStyle = "red"
+    pincel.beginPath();
+    pincel.fillText("Perdiste!!!", 600, 300);
+}
+
+function dibujarGanaste() {
+    pincel.fillStyle = "green"
+    pincel.beginPath();
+    pincel.fillText("Ganaste!!!", 600, 300);
+}
+
 function dibujarLetraEquivocada(letra, indice) {
     var posX = 325;
     pincel.beginPath();
