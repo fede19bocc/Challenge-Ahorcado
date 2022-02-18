@@ -52,7 +52,7 @@ function ganarJuego (letrasCorrectas, palabraSecreta) {
         }
     });
     if (contador == resultado.length) {
-        return alert("Gano el juego!!!");
+        return dibujarGanaste();
     }
 }
 function dibujarAhorcado(numero) {
@@ -62,7 +62,7 @@ function dibujarAhorcado(numero) {
     else if (numero == 3) {return dibujarBrazo('der');}
     else if (numero == 4) {return dibujarBrazo('izq');}
     else if (numero == 5) {return dibujarPierna('der');}
-    else {return dibujarPierna('izq'), alert("perdiste!!!") ;}
+    else {return dibujarPierna('izq'), dibujarPerdiste() ;}
 }
 
 botonAgregarPalabra.addEventListener('click', function(evento) {
